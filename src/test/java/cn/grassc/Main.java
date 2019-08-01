@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class Main {
     @Test
-    public void ioc() throws Exception {
+    public void ioc() throws Throwable {
         ApplicationContext ctx = new ApplicationContext();
         ctx.register(HelloService.class);
         ctx.refresh();

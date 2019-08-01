@@ -17,7 +17,7 @@ public class ApplicationContext implements BeanDefinitionRegistry,BeanFactory {
         this.reader.registerBean(clazz);
     }
 
-    public <T> T getBean(Class<T> tClass,Object... args) throws Exception {
+    public <T> T getBean(Class<T> tClass,Object... args) throws Throwable {
         return this.beanFactory.getBean(tClass,args);
     }
 

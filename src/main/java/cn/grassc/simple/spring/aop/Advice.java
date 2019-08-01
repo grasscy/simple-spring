@@ -1,5 +1,5 @@
 package cn.grassc.simple.spring.aop;
 
 public interface Advice {
-    Object invoke(Joinpoint joinpoint);
+    Object invoke(Joinpoint joinpoint) throws Throwable;
 }

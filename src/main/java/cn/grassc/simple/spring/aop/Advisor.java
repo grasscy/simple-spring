@@ -8,4 +8,12 @@ public class Advisor {
         this.pointcut = pointcut;
         this.advice = advice;
     }
+
+    public Pointcut getPointcut() {
+        return pointcut;
+    }
+
+    public Advice getAdvice() {
+        return advice;
+    }
 }
