@@ -15,10 +15,6 @@ public class BeanDefinitionReader {
         BeanDefinition definition = new BeanDefinition(clazz);
         String beanName = definition.getBeanClass().getName();
         BeanDefinitionHolder definitionHolder = new BeanDefinitionHolder(definition, beanName);
-        registerBeanDefinition(definitionHolder, this.registry);
-    }
-
-    public void registerBeanDefinition(BeanDefinitionHolder holder, BeanDefinitionRegistry registry) {
-        registry.registerBeanDefinition(holder, holder.getBeanDefinition());
+        registry.registerBeanDefinition(definitionHolder, definitionHolder.getBeanDefinition());
     }
 }

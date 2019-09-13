@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
-public class DefaultBeanFactory implements BeanFactory, BeanDefinitionRegistry {
+public class GenericApplicationContext implements BeanFactory, BeanDefinitionRegistry {
     private Map<String, BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<>();
 
     @Override
@@ -21,9 +21,9 @@ public class DefaultBeanFactory implements BeanFactory, BeanDefinitionRegistry {
         return createBean(this.beanDefinitionMap.get(beanName), args);
     }
 
-    <T> T createBean(BeanDefinition beanDefinition, Object... args) throws Exception {
+    private <T> T createBean(BeanDefinition beanDefinition, Object... args) throws Exception {
         Class clazz = beanDefinition.getBeanClass();
-        List<Class> argsClazz = Arrays.asList(args).stream().map(arg -> arg.getClass()).collect(Collectors.toList());
+        List<Class> argsClazz = Arrays.stream(args).map(Object::getClass).collect(Collectors.toList());
         Constructor constructor = clazz.getDeclaredConstructor(argsClazz.toArray(new Class[]{}));
         constructor.setAccessible(true);
         Object instance = constructor.newInstance(args);
